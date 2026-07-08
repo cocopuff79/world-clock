@@ -1,7 +1,64 @@
 body {
+  background-color: #f9f7fe;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 36px;
   text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+select {
+  display: block;
+  font-size: 14px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 10px 5px 5px #ababbe;
+  border-radius: 10px;
+}
+
+.city {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px dashed rgb(182, 180, 180);
+}
+
+.city:last-child {
+  border: none;
+}
+
+.date {
+  opacity: 0.5;
+}
+
+.time {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.time small {
+  font-size: 24px;
+  vertical-align: middle;
+  line-height: 36px;
 }
 
 footer {
   text-align: center;
+  font-size: 14px;
+  color: #616163;
 }
