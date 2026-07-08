@@ -1,5 +1,5 @@
 body {
-  background-color: #f9f7fe;
+  background-color: #b3e7cc;
   font-family: sans-serif;
 }
 
@@ -15,7 +15,7 @@ h2 {
 
 select {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   width: 100%;
   border-radius: 5px;
   padding: 10px;
@@ -23,10 +23,10 @@ select {
 
 .container {
   max-width: 600px;
-  margin: 60px auto;
+  margin: 30px auto;
   background: white;
-  padding: 20px;
-  box-shadow: 10px 5px 5px #ababbe;
+  padding: 5px 30px;
+  box-shadow: 10px 5px 5px #a1bbaf;
   border-radius: 10px;
 }
 

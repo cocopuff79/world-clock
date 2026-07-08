@@ -1,3 +1,5 @@
+let selectedCityTimeZone = null;
+
 function updateTime() {
   let losAngelesElement = document.querySelector("#los-angeles");
   if (losAngelesElement) {
@@ -5,22 +7,51 @@ function updateTime() {
     let losAngelesTimeElement = losAngelesElement.querySelector(".time");
     let losAngelesTime = moment().tz("America/Los_Angeles");
 
-    losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do, YYYY");
+    losAngelesDateElement.innerHTML = losAngelesTime.format(
+      "dddd, MMMM Do, YYYY",
+    );
     losAngelesTimeElement.innerHTML = losAngelesTime.format(
       "h:mm:ss [<small>]A[</small>]",
     );
   }
 
-  let newYorkElement = document.querySelector("#new-york");
-  if (newYorkElement) {
-    let newYorkDateElement = newYorkElement.querySelector(".date");
-    let newYorkTimeElement = newYorkElement.querySelector(".time");
-    let newYorkTime = moment().tz("America/New_York");
+  let seoulElement = document.querySelector("#seoul");
+  if (seoulElement) {
+    let seoulDateElement = seoulElement.querySelector(".date");
+    let seoulTimeElement = seoulElement.querySelector(".time");
+    let seoulTime = moment().tz("Asia/Seoul");
 
-    newYorkDateElement.innerHTML = newYorkTime.format("MMMM Do, YYYY");
-    newYorkTimeElement.innerHTML = newYorkTime.format(
+    seoulDateElement.innerHTML = seoulTime.format("dddd, MMMM Do, YYYY");
+    seoulTimeElement.innerHTML = seoulTime.format(
       "h:mm:ss [<small>]A[</small>]",
     );
+  }
+
+  let lagosElement = document.querySelector("#lagos");
+  if (lagosElement) {
+    let lagosDateElement = lagosElement.querySelector(".date");
+    let lagosTimeElement = lagosElement.querySelector(".time");
+    let lagosTime = moment().tz("Africa/Lagos");
+
+    lagosDateElement.innerHTML = lagosTime.format("dddd, MMMM Do, YYYY");
+    lagosTimeElement.innerHTML = lagosTime.format(
+      "h:mm:ss [<small>]A[</small>]",
+    );
+  }
+
+  if (selectedCityTimeZone) {
+    let cityTime = moment().tz(selectedCityTimeZone);
+    let cityName = selectedCityTimeZone.replace("_", " ").split("/")[1];
+    let citiesElement = document.querySelector("#cities");
+    citiesElement.innerHTML = `<div class="city">
+        <div>
+        <h2>${cityName}</h2>
+        <div class="date">${cityTime.format("dddd, MMMM Do, YYYY")}</div>
+        </div>
+        <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format("A")}</small></div>
+    </div>
+    <a href="index.html">Main</a>
+    `;
   }
 }
 
@@ -29,16 +60,9 @@ function updateCity(event) {
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
   }
-  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
-  let cityTime = moment().tz(cityTimeZone);
-  let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `<div class="city">
-        <div>
-        <h2>${cityName}</h2>
-        <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
-        </div>
-        <div class="time">${cityTime.format("h:mm:ss")} <small>${cityTime.format("A")}</small></div>
-    </div>`;
+
+  selectedCityTimeZone = cityTimeZone;
+  updateTime();
 }
 
 updateTime();
